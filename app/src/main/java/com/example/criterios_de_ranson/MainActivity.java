@@ -48,26 +48,54 @@ public class MainActivity extends AppCompatActivity {
         if (cCheckBox.isChecked()){
             if (age > 70){
                 pontuacao ++;
-            } else if (leucocitos > 1800){
+            } else {
+                pontuacao = pontuacao;
+            }
+            if (leucocitos > 1800){
                 pontuacao ++;
-            }else if (glicemia > 12.2){
+            }else {
+                pontuacao = pontuacao;
+            }
+            if (glicemia > 12.2){
                 pontuacao ++;
-            } else if (ast > 250){
+            }else {
+                pontuacao = pontuacao;
+            }
+            if (ast > 250){
                 pontuacao ++;
-            } else if (ldh > 400){
+            }else {
+                pontuacao = pontuacao;
+            }
+            if (ldh > 400){
                 pontuacao ++;
+            }else {
+                pontuacao = pontuacao;
             }
         } else {
             if (age > 55){
                 pontuacao ++;
-            } else if (leucocitos > 1600){
+            }else {
+                pontuacao = pontuacao;
+            }
+            if (leucocitos > 1600){
                 pontuacao ++;
-            }else if (glicemia > 11){
+            }else {
+                pontuacao = pontuacao;
+            }
+            if (glicemia > 11){
                 pontuacao ++;
-            } else if (ast > 250){
+            }else {
+                pontuacao = pontuacao;
+            }
+            if (ast > 250){
                 pontuacao ++;
-            } else if (ldh > 350){
+            }else {
+                pontuacao = pontuacao;
+            }
+            if (ldh > 350){
                 pontuacao ++;
+            }else {
+                pontuacao = pontuacao;
             }
         }
 
