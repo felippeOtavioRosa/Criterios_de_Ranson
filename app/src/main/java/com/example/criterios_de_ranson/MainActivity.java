@@ -11,14 +11,19 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final int EXTRA_POINT = 1;
+    public static final String EXTRA_AGE = "com.example.criterios_de_ranson.extra.idade";
+    public static final String EXTRA_POINT = "com.example.criterios_de_ranson.extra.pontuacao";
+    public static final String EXTRA_MORTAL = "com.example.criterios_de_ranson.extra.grave";
+    public static final String EXTRA_SITUATION = "com.example.criterios_de_ranson.extra.mortalidade";
     private EditText iIdadeEditText;
     private CheckBox cCheckBox;
     private EditText lLeucocitosEditText;
     private EditText gGlicemiaEditText;
     private EditText aAstEditText;
     private EditText lLdhEditText;
-
+    private int pontuacao = 0;
+    private boolean grave = false;
+    private int mortalidade = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,10 +44,6 @@ public class MainActivity extends AppCompatActivity {
         int glicemia = Integer.parseInt(gGlicemiaEditText.getText().toString());
         int ast = Integer.parseInt(aAstEditText.getText().toString());
         int ldh = Integer.parseInt(lLdhEditText.getText().toString());
-        int pontuacao = 0;
-        boolean grave;
-
-
 
         if (cCheckBox.isChecked()){
             if (age > 70){
@@ -70,10 +71,28 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        Intent intent = new Intent(this, SecondActivity.class);
-        intent.putExtra(EXTRA_POINT, pontuacao);
-        startActivityForResult(intent, EXTRA_POINT);
+        if (pontuacao >= 3){
+            grave = true;
+        }else {
+            grave = false;
+        }
 
+        if (pontuacao < 3){
+            mortalidade = 2;
+        } else if (pontuacao < 5){
+            mortalidade = 15;
+        }else if (pontuacao < 7){
+            mortalidade = 40;
+        } else {
+            mortalidade = 100;
+        }
+
+        Intent intent = new Intent(this, SecondActivity.class);
+        intent.putExtra(EXTRA_POINT,pontuacao);
+        intent.putExtra(EXTRA_AGE,age);
+        intent.putExtra(EXTRA_SITUATION, grave);
+        intent.putExtra(EXTRA_MORTAL, mortalidade);
+        startActivity(intent);
 
     }
 }
